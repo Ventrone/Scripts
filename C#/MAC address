@@ -17,7 +17,7 @@ class Program
             MAC = GetMACAddress1(computerName);
             // write MAC address
             Console.WriteLine(MAC);
-            // pause
+            // pause 
             Console.ReadLine();
         }
         public static string GetMACAddress1(string computerName)
