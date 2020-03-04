@@ -1,8 +1,8 @@
+// gets the mac address of a remote machine and displays it
 using System;
 using System.Management;
 
-class Program
-    {
+
         static void Main(string[] args)
         {
             string computerName;    // variable for computer name
@@ -46,4 +46,4 @@ class Program
             //macAddress = macAddress.Replace(":", "");
             return macAddress;
         }
-    }
+    
