@@ -1,0 +1,49 @@
+using System;
+using System.Management;
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string computerName;    // variable for computer name
+            string MAC;             // variable for MAC Address
+            // ask to input computer name
+            Console.WriteLine("Please enter computer you want to see MAC address on:");
+            // assign computer name to user input
+            computerName = Console.ReadLine();
+            // trim computerName variable of leading and trailing white space and make upper case
+            computerName = computerName.Trim().ToUpper();
+            // call GetMacAddress1 function and pass computerName variable to it
+            MAC = GetMACAddress1(computerName);
+            // write MAC address
+            Console.WriteLine(MAC);
+            // pause
+            Console.ReadLine();
+        }
+        public static string GetMACAddress1(string computerName)
+        {
+            // create management object and connect to remote computer and check the windows network adapter configuration
+            ManagementObjectSearcher objMOS = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2","Select * FROM Win32_NetworkAdapterConfiguration");
+            ManagementObjectCollection objMOC = objMOS.Get();
+            // great variable for MAC address assign it to be empty string
+            string macAddress = String.Empty;
+            foreach (ManagementObject objMO in objMOC)
+            {
+                // for every object labeled MacAddress
+                object tempMacAddrObj = objMO["MacAddress"];
+
+                if (tempMacAddrObj == null) //Skip objects without a MACAddress
+                {
+                    continue;
+                }
+                if (macAddress == String.Empty) // only return MAC Address from first card that has a MAC Address
+                {
+                    macAddress = tempMacAddrObj.ToString();
+                }
+                objMO.Dispose();
+            }
+            // user below code to remove colons in MAC address
+            //macAddress = macAddress.Replace(":", "");
+            return macAddress;
+        }
+    }
