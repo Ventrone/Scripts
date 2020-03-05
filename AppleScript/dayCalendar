@@ -1,0 +1,5 @@
+# have calendar open to today
+tell application "Calendar"
+	view calendar at current date
+	switch view to day view
+end tell
