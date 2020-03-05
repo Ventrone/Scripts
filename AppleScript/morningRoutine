@@ -1,0 +1,28 @@
+# open outlook
+tell application "Microsoft Outlook"
+	activate
+end tell
+# open messages
+tell application "Messages"
+	activate
+end tell
+# open safari activate, and navigate to webpage
+tell application "Safari"
+	activate
+	open location "www.google.com"
+end tell
+# set variable to smb share
+set serverIP to "smb://-.-.-.-"
+#set user account and password
+set UserAccount to "-"
+set ServerPassword to "-"
+set serverVolume to UserAccount
+# have finder open shares
+tell application "Finder"
+	try
+		if disk serverVolume exists then
+		else
+			mount volume serverIP as user name UserAccount with password ServerPassword
+		end if
+	end try
+end tell
