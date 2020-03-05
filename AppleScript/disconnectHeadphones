@@ -7,7 +7,7 @@
 tell application "System Events" to tell process "SystemUIServer"
 	set bt to (first menu bar item whose description is "bluetooth") of menu bar 1
 	click bt
-	tell (first menu item whose title is "BLUETOOTH_DEVICE_NAME") of menu of bt
+	tell (first menu item whose title is "Randy's Beats Solo") of menu of bt
 		click
 		tell menu 1
 			if exists menu item "Disconnect" then
