@@ -1,0 +1,16 @@
+# set variable to gacifs share, insert IP address of smb share after smb://
+set serverIP to "smb://-.-.-.-"
+
+#set user account and password, add useraccount and password with permissions to smb share
+set UserAccount to "-"
+set ServerPassword to "-"
+set serverVolume to UserAccount
+# have finder open shares
+tell application "Finder"
+	try
+		if disk serverVolume exists then
+		else
+			mount volume serverIP as user name UserAccount with password ServerPassword
+		end if
+	end try
+end tell
