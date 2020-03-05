@@ -1,0 +1,10 @@
+# open messages application
+tell application "Messages"
+	activate
+  #put phone number in quotations
+	set targetBuddy to "-"
+	set targetService to id of 1st service whose service type = iMessage
+	set textMessage to "Working late again"
+	set theBuddy to buddy targetBuddy of service id targetService
+	send textMessage to theBuddy
+end tell
