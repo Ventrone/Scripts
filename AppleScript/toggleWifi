@@ -1,0 +1,15 @@
+# toggle wifi
+# shell script to list all hardware ports for wifi
+set device to do shell script "networksetup -listallhardwareports | awk '$3==\"Wi-Fi\" {getline;print}' | awk '{print $2}'"
+set power to do shell script "networksetup -getairportpower " & device & " | awk '{print $4}'"
+
+# if power is on then set it to off
+if power is equal to "on" then
+	set power to "off"
+	# if power is off
+else
+	# turn it on
+	set power to "on"
+end if
+# turn wifi on or off
+do shell script ("networksetup -setairportpower " & device & " " & power)
