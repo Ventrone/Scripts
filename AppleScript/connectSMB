@@ -1,4 +1,4 @@
-# set variable to gacifs share, insert IP address of smb share after smb://
+# set variable to smb share, insert IP address of smb share after smb://
 set serverIP to "smb://-.-.-.-"
 
 #set user account and password, add useraccount and password with permissions to smb share
