@@ -1,0 +1,20 @@
+# connects to bluetooth device
+# script editor must have access to menu bar and menu bar must have bluetooth
+# go to system preferences, security & privacy > scroll down to Accessibility > click 
+# accessibility. click the lock to edit and click the check box next to script editor
+# in system preferences click bluetooth then check the box on the bottom show bluetooth
+# in menu bar
+tell application "System Events" to tell process "SystemUIServer"
+	set bt to (first menu bar item whose description is "bluetooth") of menu bar 1
+	click bt
+	tell (first menu item whose title is "BLUETOOTH_DEVICE_NAME") of menu of bt
+		click
+		tell menu 1
+			if exists menu item "Disconnect" then
+				click menu item "Disconnect"
+			else
+				click bt -- close main dropdown to clean up after ourselves
+			end if
+		end tell
+	end tell
+end tell
