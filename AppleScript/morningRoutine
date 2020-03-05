@@ -11,6 +11,11 @@ tell application "Safari"
 	activate
 	open location "www.google.com"
 end tell
+# have calendar open to today
+tell application "Calendar"
+	view calendar at current date
+	switch view to day view
+end tell
 # set variable to smb share
 set serverIP to "smb://-.-.-.-"
 #set user account and password
