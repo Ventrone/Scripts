@@ -1,0 +1,3 @@
+// click on text field properties, go to validate tab click radio button for Run custom validation script
+// click edit and paste there then click ok
+event.value = event.value.toUpperCase();
