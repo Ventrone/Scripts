@@ -1,0 +1,2 @@
+:: -r defines rebook -t and number defines how long to wait to reboot
+SHUTDOWN -r -t 60
