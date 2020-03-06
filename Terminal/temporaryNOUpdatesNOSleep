@@ -1,0 +1,4 @@
+# do not go to sleep or take updates - disregards everything in system preferences
+# goes including the -u and -t switches for how long in seconds you want this to last for
+# to run until you shut down terminal or press ctrl + c disregard switches and seconds parameter
+Caffeinate -u -t (seconds)
