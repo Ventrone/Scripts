@@ -1,0 +1,15 @@
+:: /S - This switch makes forfiles recurse subdirectories. Like "DIR /S".
+:: /D - Select files with a last modified date. For example,-365 means over a year ago, -30 means a month ago.
+:: /P  - To indicate the path to start the search.
+:: /C "command" - This command specifies the command to execute on each file that will be found. Command strings should be wrapped in double quotes.
+:: @file - returns the name of the file.
+:: @fname - returns the file name without extension.
+:: @ext - returns only the extension of the file.
+:: @path - returns the full path of the file.
+:: @relpath - returns the relative path of the file.
+:: @isdir - returns "TRUE" if a file type is a directory, and "FALSE" for files.
+:: @fsize - returns the size of the file in bytes.
+:: @fdate - returns the last modified date of the file.
+:: @ftime - returns the last modified time of the file.
+
+ForFiles /p "H:\Downloads" /s /d -30 /c "cmd /c del @file"
