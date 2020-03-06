@@ -12,7 +12,7 @@ SET _what=/E /SEC /COPY:DATSO /B
 :: /SEC :: copy files with SECurity
 :: /MIR :: copies all current files and deletes files that are missing
 
-SET _options=/NP /ZB /R:2 /W:1 /LOG:C:\Users\radmin\Desktop\move.txt
+SET _options=/NP /ZB /R:2 /W:1 /LOG:"file path and name of where to put log file"
 :: /TEE : Output to console window, as well as the log file
 :: /ZB :: Use restartable mode; if access denied use Backup mode
 :: /NP :: No Progress - don't display % copied
