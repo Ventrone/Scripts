@@ -1,0 +1,2 @@
+#cehck for App Store updates every defined days
+Defaults write com.apple.SoftwareUpdate ScheduleFrequency -int (days)
