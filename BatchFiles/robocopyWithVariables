@@ -1,0 +1,26 @@
+@ECHO OFF
+SETLOCAL
+
+SET _source="location of source folder"
+
+SET _dest="locatin of where to move"
+
+SET _what=/E /SEC /COPY:DATSO /B
+:: /E :: Copy Subfolders, including Empty Subfolders
+:: /COPYALL :: COPY ALL file info
+:: /B :: copy files in Backup mode.
+:: /SEC :: copy files with SECurity
+:: /MIR :: copies all current files and deletes files that are missing
+
+SET _options=/NP /ZB /R:2 /W:1 /LOG:C:\Users\radmin\Desktop\move.txt
+:: /TEE : Output to console window, as well as the log file
+:: /ZB :: Use restartable mode; if access denied use Backup mode
+:: /NP :: No Progress - don't display % copied
+:: /R:n :: number of Retries
+:: /W:n :: Wait time between retries
+:: /LOG :: Output log file
+:: /NFL :: No file logging
+:: /NDL :: No dir logging
+
+ROBOCOPY %_source% %_dest% %_what% %_options%
+pause
