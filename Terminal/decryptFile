@@ -1,0 +1,2 @@
+Openssl enc -aes-256-cbc -d -in (file path and name of file you want encrypted) -out (file path and name of what you want to save decrypted file)
+#will ask for password
