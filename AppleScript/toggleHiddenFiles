@@ -1,0 +1,14 @@
+# create boolean to yes
+set newHiddenState to "YES"
+try
+  # set the old state to showing files 
+	set oldHiddenState to do shell script "defaults read com.apple.finder AppleShowAllFiles"
+  # if old state is yes
+	if oldHiddenState is in {"1", "YES"} then
+    # set new state to no
+		set newHiddenState to "NO"
+	end if
+end try
+# tell os to show or hide hidden files
+do shell script "defaults write com.apple.finder AppleShowAllFiles " & newHiddenState
+do shell script "killAll Finder"
