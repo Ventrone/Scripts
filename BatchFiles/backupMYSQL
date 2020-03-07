@@ -2,4 +2,5 @@
 cd\
 cd Program Files\MySQL\MySQL Server 8.0\bin
 mysqldump -u root -p[password] [name of db to backup]> dump.sql
+move dump.sql F:\
 pause
