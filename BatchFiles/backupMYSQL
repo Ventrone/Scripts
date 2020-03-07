@@ -1,6 +1,10 @@
-# run this from save drive that MYSQL is installed on
+# run this from same drive that MYSQL is installed on
+# change directory
 cd\
+# change directory to the folder that mysqldump.exe is installed
 cd Program Files\MySQL\MySQL Server 8.0\bin
+# run command to back up -u username usually root -p password for root then put name of database you want to back up
 mysqldump -u root -p[password] [name of db to backup]> dump.sql
+# move file from current location to another drive
 move dump.sql F:\
 pause
