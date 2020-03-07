@@ -1,0 +1,9 @@
+try
+	tell application "Finder"
+		# move all files in downloads to trash then move all folders in downloads to trash
+		move (files of alias "Macintosh HD:Users:randallventrone:Downloads" whose name is not "Clear Downloads.app") to trash
+		move (folders of alias "Macintosh HD:Users:randallventrone:Downloads" whose name is not "Clear Downloads.app") to trash
+	end tell
+on error
+	display dialog ("Error") buttons {"OK"}
+end try
