@@ -1,0 +1,21 @@
+# allow system events to see every open process
+tell application "System Events" to set the visible of every process to true
+# allow Finder to stay open
+set white_list to {"Finder"}
+try
+	tell application "Finder"
+		# create a list of open applications
+		set process_list to the name of every process whose visible is true
+	end tell
+	# loop through list of open applications
+	repeat with i from 1 to (number of items in process_list)
+		# check to see if the current application is in the white list or not
+		set this_process to item i of the process_list
+		if this_process is not in white_list then
+			# tell the application to quit
+			tell application this_process
+				quit
+			end tell
+		end if
+	end repeat
+end try
