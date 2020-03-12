@@ -1,0 +1,20 @@
+// if the value of itDeptNotified check box is yes
+if(event.target.value = (getField("itDeptNotified").value=="Yes"))
+{
+  // email this address
+  var toAddress="helpdesk@rilegislature.gov"
+  //subject line of the email
+  var subjectLine="New hire form"
+  //body of the email
+  var body="Please see attached new hire form for " + event.target.value("name") 
+  // put the check mark in the check box
+  getField("itDeptNotified").value="Yes";
+  // bUI must be set to false otherwise more arguements must be passed
+  this.mailDoc({bUI: false, cTo: toAddress, cSubject: subjectLine, cMsg: body});
+}  
+  // if the value of itDept is not yes
+  else
+{
+   	//remove the checkmark
+  	 getField("itDeptNotified").value="Off"; 
+}
