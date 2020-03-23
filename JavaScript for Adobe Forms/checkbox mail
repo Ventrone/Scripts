@@ -6,7 +6,7 @@ if(event.target.value = (getField("itDeptNotified").value=="Yes"))
   //subject line of the email
   var subjectLine="New hire form"
   //body of the email
-  var body="Please see attached new hire form for " + event.target.value("name") 
+  var body="Please see attached new hire form form"
   // put the check mark in the check box
   getField("itDeptNotified").value="Yes";
   // bUI must be set to false otherwise more arguements must be passed
