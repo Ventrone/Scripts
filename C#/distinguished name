@@ -1,0 +1,36 @@
+using System.DirectoryServices.AccountManagement;
+
+            UserPrincipal user = null;
+            const string DOMAIN_NAME = "DOMAIN NAME"; // constant to hold name of domain
+            string userName;        // string to hold user's name
+
+            // ask user for user name
+            Console.WriteLine("Enter username");
+            // put input into variable userName
+            userName = Console.ReadLine();
+            // make userName variable lowercase and trim all white space before and after
+            userName = userName.ToLower().Trim();
+
+            /*  create context of domain can take 4 arguements 1st is the context type, second is the domain name, third is user name with privileges to be in active directory
+                4th is users password */
+                
+            //no user name or password defined, must be used on an account with privileges to be in active directory
+            // PrincipalContext ctx = new PrincipalContext(ContextType.Domain, DOMAIN_NAME); 
+            //  with user and passwords defined put username in frist quotations and password in second quotations
+            PrincipalContext ctx = new PrincipalContext(ContextType.Domain, DOMAIN_NAME, "Domain Name", "Password");
+            {
+                //if user exists
+                if ((user = UserPrincipal.FindByIdentity(ctx, userName)) != null)
+
+                {
+                    // write the distinguished name
+                    Console.WriteLine(user.DistinguishedName);
+
+                }
+                // if no user name
+                else
+                {
+                  // say no user is on the domain
+                  Console.WriteLine("No user exists by name " + userName + " on domain " + DOMAIN_NAME);
+                }
+            }
