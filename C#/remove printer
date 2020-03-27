@@ -1,0 +1,20 @@
+string networked;
+            // create wmi object for printers
+            ManagementObjectSearcher printers = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "SELECT * FROM Win32_Printer");
+            
+            // for every printer in Win32_Printers
+            foreach (ManagementObject print in printers.Get())
+            {
+                    // set networked variable to value of Network property of printers
+                    networked = print.GetPropertyValue("Network").ToString();
+                    // if networked value is true
+                    if(networked == "True")
+                    {
+                        // write printer name
+                        Console.WriteLine("Printers    : " + print.GetPropertyValue("Name").ToString());
+                        // delete printer
+                        print.Delete();
+                        // write printer you deleted
+                        Console.WriteLine("Removed " + print.GetPropertyValue("Name").ToString());
+                    }
+            }
