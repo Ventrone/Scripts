@@ -1,0 +1,9 @@
+// create management object for remote machine to Win32_ComputerSystem
+ManagementObjectSearcher searcher = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "Select * from Win32_ComputerSystem");
+
+// for every object found
+foreach (ManagementObject process in searcher.Get())
+{
+      // write the model name
+      Console.WriteLine(process["Model"].ToString());
+}
