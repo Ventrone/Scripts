@@ -1,0 +1,10 @@
+        // create management object to Win32_Bios for remote computer 
+        ManagementObjectSearcher ComSerial = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "SELECT * FROM Win32_BIOS");
+        
+        // for every object in Win32_Bios
+        foreach (ManagementObject wmi in ComSerial.Get())
+        {
+                // write the serial number
+                Console.WriteLine(wmi.GetPropertyValue("SerialNumber").ToString());
+
+        }
