@@ -1,0 +1,20 @@
+// create variable for computer name
+var de = new DirectoryEntry("WinNT://" + computerName);
+                
+// find all children in the administrators group
+                var objGroup = de.Children.Find("Administrators", "group");
+                
+                // for each object found in members 
+                foreach (object member in (IEnumerable)objGroup.Invoke("Members"))
+                {
+                    // remove user from group
+                    using (var memberEntry = new DirectoryEntry(member))
+                    if (memberEntry.Name == user)
+                    objGroup.Invoke("Remove", new[] { memberEntry.Path });
+                }
+                // committ changes to group
+                objGroup.CommitChanges();
+                // dispose of group
+                objGroup.Dispose();
+                // write what user was just removed from administrators group
+                Console.WriteLine("Removed " + user + " from the administrators group");
