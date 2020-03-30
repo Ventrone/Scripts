@@ -1,10 +1,12 @@
-        // RAM SIZE
-        double BYTE = 1073741824;
-        // create management object for remote computer to totalphysicalmemory in Win32_ComputerSystem
-        ManagementObjectSearcher mem = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "SELECT totalphysicalmemory FROM Win32_ComputerSystem");
-        // get physical RAM size
-        double RAM = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
-        //divide RAM by BYTE to get size in GB
-        double GB = Math.Ceiling(RAM / BYTE);
-        // write
-        Console.WriteLine(GB);
+string RAM;
+double BYTE = 1024 * 1024 * 1024;
+ManagementObjectSearcher mem = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "SELECT totalphysicalmemory FROM Win32_ComputerSystem");
+string physicalMemory;
+double memory;
+foreach (ManagementObject item in mem.Get())
+{
+     physicalMemory = item["TotalPhysicalMemory"].ToString();
+     memory = Convert.ToDouble(physicalMemory);
+     double GB = Math.Ceiling(memory / BYTE);
+     return RAM = GB.ToString() + " GB";
+}
