@@ -11,5 +11,5 @@ ManagementScope scope = new ManagementScope("\\\\" + computerName + "\\root\\cim
         foreach (ManagementObject m in queryCollection)
         {
             // Display the remote computer OS information
-            Console.WriteLine("Operating System  : {0}", m["Caption"]);
+            Console.WriteLine(m["Caption"]);
         }
