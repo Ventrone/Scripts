@@ -2,7 +2,7 @@
 if(event.target.value = (getField("itDeptNotified").value=="Yes"))
 {
   // email this address
-  var toAddress="helpdesk@rilegislature.gov"
+  var toAddress="email@email.com"
   //subject line of the email
   var subjectLine="New hire form"
   //body of the email
