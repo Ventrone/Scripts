@@ -1,4 +1,4 @@
-:: get program name byt first running 
+:: get program name buy first running 
 wmic product get  name
 :: then run with product name inbetween quotations
 wmic product where name="-" call uninstall
