@@ -1,0 +1,68 @@
+// create management scope for remote computer
+System.Management.ManagementScope ms = new ManagementScope("\\\\" + hostname + "\\root\\cimv2");
+            
+            // connect
+            ms.Connect();
+            
+            //create system management object query to Win32_OperatingSystem
+            System.Management.ObjectQuery oq = new System.Management.ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+
+            // create management query passing remote computer and object query to it
+            ManagementObjectSearcher query = new ManagementObjectSearcher(ms, oq);
+            
+            // get the query results
+            ManagementObjectCollection queryCollection1 = query.Get();
+
+            // for every object in the query
+            foreach (ManagementObject mo in queryCollection1)
+            {
+            
+                // Win32Shutdown methods
+                // 0 - Log Off
+                // 4 - Forced Log Off
+                // 1 - Shutdown
+                // 5 - Forced Shutdown
+                // 2 - Reboot
+                // 6 - Forced Reboot
+                // 8 - Power Off
+                // 12 - Foreced Power Off
+                  
+                // create the Win32Shutdown method as an object otherwise this won't work
+                string[] ss = { "2" };
+
+                // reboots the computer
+                mo.InvokeMethod("Reboot", ss);
+
+                System.Management.ManagementScope ms = new ManagementScope("\\\\" + hostname + "\\root\\cimv2");
+            ms.Connect();
+            //Query remote computer across the connection
+            System.Management.ObjectQuery oq = new System.Management.ObjectQuery("SELECT * FROM Win32_OperatingSystem");
+
+
+            ManagementObjectSearcher query = new ManagementObjectSearcher(ms, oq);
+            ManagementObjectCollection queryCollection1 = query.Get();
+
+            foreach (ManagementObject mo in queryCollection1)
+            {
+                // Win32Shutdown methods
+                // 0 - Log Off
+                // 4 - Forced Log Off
+                // 1 - Shutdown
+                // 5 - Forced Shutdown
+                // 2 - Reboot
+                // 6 - Forced Reboot
+                // 8 - Power Off
+                // 12 - Foreced Power Off
+
+                // create the Win32Shutdown method as an object otherwise this won't work
+                
+                // reboot method
+                string[] ss = { "2" };
+                // reboots the computer
+                mo.InvokeMethod("Reboot", ss);
+
+                // log off method logs user off
+                // string[] ss = { "0" };             
+                //mo.InvokeMethod("Win32Shutdown", ss);
+            }
+             
