@@ -1,0 +1,8 @@
+        // create management searcher for remote computer to Win32_Baseboard
+        ManagementObjectSearcher mbs = new ManagementObjectSearcher("\\\\" + computerName + "\\root\\cimv2", "Select * From Win32_BaseBoard");
+        // for every object found
+        foreach (ManagementObject mo in mbs.Get())
+        {
+            // write the manufacturer of computer
+            Console.WriteLine(mo["Manufacturer"].ToString());
+        }
