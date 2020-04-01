@@ -1,0 +1,53 @@
+// calculate the amount of bytes in a GB
+double BYTE = 1024 * 1024 * 1024;
+// strings for capacity and free space
+string capacity;
+string freeSpace;
+// doubles for HDD capacity and free space
+double HDD;
+double freeHDD;
+// create management scope to the computer
+ManagementScope scope = new ManagementScope("\\\\" + computerName + "\\root\\cimv2");
+// connect
+scope.Connect();
+// query the win32 volume for everything
+ObjectQuery query = new ObjectQuery("SELECT * FROM Win32_Volume");
+ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query);
+ManagementObjectCollection queryCollection = searcher.Get();
+// for volume found do this
+foreach (ManagementObject m in queryCollection)
+{
+  // if the drive letter is not null and the drive type is local disk
+  if (m["DriveLetter"] != null & m["DriveType"].ToString() == 3.ToString())
+  {
+    /** 
+    * drive type
+    * 0 = unknown
+    * 1 = no root directory
+    * 2 = removable disk
+    * 3 = local disk
+    * 4 = Network Drive
+    * 5 = Compact Disk
+    * 6 = RAM Disk
+    **/
+
+    // displays the drive letter
+    Console.WriteLine(m["Caption"]);
+    // display label of the drive
+    Console.WriteLine("Label"];
+    // displays file system type
+    Console.WriteLine(["FileSystem"]);
+    // get size of HDD in bytes and convert to string
+    capacity = m["Capacity"].ToString();
+    // convert capacity to double and assing to variable
+    HDD = Convert.ToDouble(capacity);
+    // divide HDD and BYTE and round up
+    double GB = Math.Ceiling(HDD / BYTE);
+    // display with GB afterwards
+    Console.WriteLine(GB.ToString() + " GB");
+    freeSpace = m["FreeSpace"].ToString();
+    freeHDD = Convert.ToDouble(freeSpace);
+    double freeGB = Math.Ceiling(freeHDD / BYTE);
+    Console.WriteLine(freeGB.ToString() + " GB");
+  }
+}
