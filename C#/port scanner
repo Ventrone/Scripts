@@ -1,0 +1,19 @@
+// change the value of currPort to determine how many ports to scan this goes to 25
+for (int CurrPort = 1; CurrPort <= 25; CurrPort++)
+{
+  // create a new tcp client
+  TcpClient TcpScan = new TcpClient();
+                
+  try
+  {
+    // Try to connect 
+    TcpScan.Connect(ipAddress, CurrPort);
+    // if no exception is thrown the port is open
+    Console.WriteLine("Port " + CurrPort + " open");
+  }
+  catch
+  {
+    // if an error occured the port is closed
+    Console.WriteLine("Port " + CurrPort + " closed");
+  }
+}
