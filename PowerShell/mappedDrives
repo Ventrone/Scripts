@@ -1,0 +1,15 @@
+# a user must be logged in to see drives otherwise it will return blank
+
+$computerName = "computer"
+
+ 
+
+Get-WmiObject -class "win32_mappedlogicaldisk" -namespace "root\CIMV2" -computername "$computerName" | select-object deviceid, providername | foreach { 
+
+  $body =  $_.deviceid + " " +  $_.ProviderName
+
+  $body
+}   
+
+
+ pause
