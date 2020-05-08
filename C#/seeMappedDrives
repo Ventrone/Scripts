@@ -1,0 +1,17 @@
+try
+            {
+                ManagementObjectSearcher objMOS = new ManagementObjectSearcher("\\\\" + computer + "\\root\\cimv2", "SELECT * FROM Win32_MappedLogicalDisk");
+
+                foreach (ManagementObject queryObj in objMOS.Get())
+                {
+
+                    Console.Write(queryObj["DeviceID"]);
+                    Console.Write(" ");
+                    Console.Write(queryObj["ProviderName"]);
+                    Console.Write(Environment.NewLine);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
